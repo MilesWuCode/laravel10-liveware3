@@ -2,6 +2,7 @@
 
 use App\Livewire\CreatePost;
 use App\Livewire\ListPosts;
+use App\Livewire\ShowPost;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,4 @@ Route::get('/', function () {
 
 Route::get('/posts/create', CreatePost::class)->name('posts.create');
 Route::get('/posts', ListPosts::class)->name('posts.list');
-// Route::get('/posts/{id}', Post::class)->name('posts.id');
+Route::get('/posts/{post}', ShowPost::class)->name('posts.show');
