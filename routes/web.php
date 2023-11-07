@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\CreatePost;
+use App\Livewire\ListPosts;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/posts/create', CreatePost::class)->name('posts.create');
+Route::get('/posts', ListPosts::class)->name('posts.list');
+// Route::get('/posts/{id}', Post::class)->name('posts.id');
