@@ -4,11 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class CreatePost extends Component
 {
+    #[Rule('required|min:10')]
     public $title;
 
     public $content;
@@ -29,10 +31,16 @@ class CreatePost extends Component
 
     public function save()
     {
+        $this->validate();
+
         Post::create([
             'title' => $this->title,
             'content' => $this->content,
         ]);
+
+        // Post::create(
+        //     $this->only(['title', 'content'])
+        // );
 
         return redirect()->to('/posts')
             ->with(['status' => 'Post created!']);
